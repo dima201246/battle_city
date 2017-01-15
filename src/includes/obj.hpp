@@ -20,14 +20,31 @@
 	typedef unsigned char btype_t;
 	typedef unsigned char bpos_t;
 
+	const std::string	texture_path	= "media/image/Textures.png";
+	const unsigned char	fps_limit		= 60;
+
+	class Application
+	{
+	public:
+		Application();
+		~Application();
+
+		void startGame();
+
+	private:
+		sf::RenderWindow	*window_;
+	};
+
 	class Block
 	{
 	public:
-		Block(std::string, sf::RenderWindow*);
+		Block();
 		~Block();
 
+		void init(std::string, sf::RenderWindow*);
 		void setScale(float, float);
 		void setType(btype_t, bpos_t);
+		btype_t getType();
 
 	private:
 		sf::Sprite			sprite_;
@@ -38,12 +55,19 @@
 	class Map
 	{
 	public:
-		Map();
+		Map(std::string);
 		~Map();
 
-	// private:
+		void draw();
+		void setWindow(sf::RenderWindow*);
+
+	private:
+		Block				**map_;
+		sf::Sprite			sprite_;
+		std::string 		texturePath_;
+		sf::RenderWindow	*window_;
 	};
 
-	extern Map **mainMap;
+	extern Map mainMap;
 
 #endif

@@ -3,7 +3,7 @@ CPPFLAGS 		= -c -Wall -g
 OutPut			= battle_city
 _BTLC_VERSION	= \"0.0.1\"
 
-Modules		= block.o map.o
+Modules		= block.o map.o application.o
 Main 		= main.o
 
 VPATH = ./src
